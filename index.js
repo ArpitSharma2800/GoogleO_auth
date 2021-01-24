@@ -1,4 +1,5 @@
 const express = require('express');
+const { login, google, logout } = require('./routes/auth');
 const app = express();
 const router = express.Router();
 
@@ -9,9 +10,14 @@ router.get('/',(req, res) => {
 });
 
 
+router.get('/auth/login',login);
+router.get('/auth/google',google);
+router.get('/auth/logout',logout);
 
 
-app.use('/api', router);
+
+
+app.use('/', router);
 app.listen(3000, function(){
     console.log('3000 port started');
 })
